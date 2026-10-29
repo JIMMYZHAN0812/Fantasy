@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taiwan Incredible League - Standings</title>
+    <!-- 引入 Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- 引入 Google Fonts (Inter) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: #0b0f19; /* 極致深色背景 */
+        }
+        
+        /* 自訂細微的滾動條 */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569;
+        }
+    </style>
+</head>
+<body class="text-slate-200 antialiased min-h-screen py-10 px-4 sm:px-6 lg:px-8 relative overflow-x-hidden">
+
+    <div class="max-w-5xl mx-auto">
+        
+        <!-- Header -->
+        <header class="mb-8 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-3xl font-bold tracking-tight text-white mb-1">Taiwan Incredible League</h1>
+                <p class="text-slate-400 font-medium text-sm">Season 2026-2027 • Regular Season Standings</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <button onclick="shareDashboard()" class="flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold rounded-lg shadow-lg shadow-indigo-500/30 transition-all active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+                    </svg>
+                    Share Dashboard
+                </button>
+            </div>
+        </header>
+
+        <!-- Prize Pool Card -->
+        <div class="mb-6 rounded-2xl bg-gradient-to-br from-amber-500/20 to-orange-600/10 border border-amber-500/30 p-6 flex flex-col items-center justify-center shadow-lg shadow-amber-900/20">
+            <h2 class="text-amber-200/80 text-sm font-bold uppercase tracking-widest mb-1">Total Prize Pool</h2>
+            <div class="text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-yellow-500">
+                $400
+            </div>
+        </div>
+
+        <!-- Standings Container (Scrollable on small screens) -->
+        <div class="bg-[#111827] rounded-2xl border border-slate-800 shadow-2xl overflow-hidden">
+            <div class="overflow-x-auto">
+                <div class="min-w-[800px]">
+                    <!-- Table Header -->
+                    <div class="flex items-center px-4 sm:px-6 py-4 border-b border-slate-800/80 bg-[#161f33]/50">
+                        <div class="w-10 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">Rank</div>
+                        <div class="flex-1 ml-6 min-w-[200px] text-xs font-semibold text-slate-500 uppercase tracking-wider">Team</div>
+                        <div class="w-16 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">Week 1</div>
+                        <div class="w-16 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">Week 2</div>
+                        <div class="w-16 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">Week 3</div>
+                        <div class="w-16 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">Week 4</div>
+                        <div class="w-16 text-center text-xs font-semibold text-slate-500 uppercase tracking-wider">Week 5</div>
+                        <div class="w-32 text-right text-xs font-semibold text-slate-500 uppercase tracking-wider">Regular Season<br>Total</div>
+                    </div>
+
+                    <!-- List Body -->
+                    <div class="flex flex-col divide-y divide-slate-800/50">
+                        
+                        <!-- 1. MK -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-300 group-hover:text-white transition-colors">1</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=MK&background=random" alt="MK" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-semibold text-white tracking-wide text-sm sm:text-base">MK</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2.5 py-1 rounded bg-green-500/20 text-green-400 font-bold text-xs">W</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-slate-300">0</div>
+                        </div>
+
+                        <!-- 2. 小丑NO.1 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-300 group-hover:text-white transition-colors">2</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=小&background=random" alt="小丑NO.1" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-semibold text-white tracking-wide text-sm sm:text-base">小丑NO.1</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2.5 py-1 rounded bg-green-500/20 text-green-400 font-bold text-xs">W</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-slate-300">0</div>
+                        </div>
+
+                        <!-- 3. Ray聲大雨點小 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-300 group-hover:text-white transition-colors">3</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=R&background=random" alt="Ray聲大雨點小" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-semibold text-white tracking-wide text-sm sm:text-base">Ray聲大雨點小</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2.5 py-1 rounded bg-green-500/20 text-green-400 font-bold text-xs">W</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-slate-300">0</div>
+                        </div>
+
+                        <!-- 4. 夏衣隊 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-400 group-hover:text-white transition-colors">4</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=夏&background=random" alt="夏衣隊" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-medium text-slate-100 group-hover:text-white transition-colors text-sm sm:text-base">夏衣隊</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2.5 py-1 rounded bg-green-500/20 text-green-400 font-bold text-xs">W</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-slate-300">0</div>
+                        </div>
+
+                        <!-- 5. 咬稻德頭 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-400 group-hover:text-white transition-colors">5</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=咬&background=random" alt="咬稻德頭" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-medium text-slate-100 group-hover:text-white transition-colors text-sm sm:text-base">咬稻德頭</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2.5 py-1 rounded bg-slate-500/20 text-slate-400 font-bold text-xs">D</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-slate-300">0</div>
+                        </div>
+
+                        <!-- 6. 汪汪隊請加油 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-400 group-hover:text-white transition-colors">6</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=汪&background=random" alt="汪汪隊請加油" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-medium text-slate-100 group-hover:text-white transition-colors text-sm sm:text-base">汪汪隊請加油</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2.5 py-1 rounded bg-slate-500/20 text-slate-400 font-bold text-xs">D</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-slate-300">0</div>
+                        </div>
+
+                        <!-- 7. 泡嬌最後一舞 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-400 group-hover:text-white transition-colors">7</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=泡&background=random" alt="泡嬌最後一舞" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-medium text-slate-100 group-hover:text-white transition-colors text-sm sm:text-base">泡嬌最後一舞</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2 py-1 rounded bg-red-500/20 text-red-400 font-bold text-xs">-100</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-red-400">-100</div>
+                        </div>
+
+                        <!-- 8. 紫氣Don來 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-500 group-hover:text-slate-300 transition-colors">8</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=紫&background=random" alt="紫氣Don來" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-medium text-slate-300 group-hover:text-slate-100 transition-colors text-sm sm:text-base">紫氣Don來</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2 py-1 rounded bg-red-500/20 text-red-400 font-bold text-xs">-100</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-red-400">-100</div>
+                        </div>
+
+                        <!-- 9. 少林斑馬 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-500 group-hover:text-slate-300 transition-colors">9</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=少&background=random" alt="少林斑馬" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-medium text-slate-300 group-hover:text-slate-100 transition-colors text-sm sm:text-base">少林斑馬</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2 py-1 rounded bg-red-500/20 text-red-400 font-bold text-xs">-100</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-red-400">-100</div>
+                        </div>
+
+                        <!-- 10. 山貓不是三腳貓 -->
+                        <div class="flex items-center px-4 sm:px-6 py-3.5 hover:bg-slate-800/40 transition-colors group cursor-default">
+                            <div class="w-10 text-center font-bold text-slate-500 group-hover:text-slate-300 transition-colors">10</div>
+                            <div class="ml-4 sm:ml-6 flex items-center flex-1 min-w-[200px]">
+                                <img src="https://ui-avatars.com/api/?name=山&background=random" alt="山貓不是三腳貓" class="w-10 h-10 rounded-full object-cover shadow-inner border border-slate-600/30">
+                                <div class="ml-4 font-medium text-slate-300 group-hover:text-slate-100 transition-colors text-sm sm:text-base">山貓不是三腳貓</div>
+                            </div>
+                            <div class="w-16 flex justify-center"><span class="px-2 py-1 rounded bg-red-500/20 text-red-400 font-bold text-xs">-100</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-16 flex justify-center"><span class="text-slate-600">-</span></div>
+                            <div class="w-32 text-right font-bold text-red-400">-100</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- 複製成功提示 (Toast Notification) -->
+    <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 transform transition-all duration-300 translate-y-full opacity-0 bg-slate-800 text-white px-6 py-3 rounded-full shadow-lg shadow-black/50 border border-slate-700 flex items-center gap-2 z-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+        </svg>
+        <span class="text-sm font-medium">連結已複製到剪貼簿！</span>
+    </div>
+
+    <script>
+        function shareDashboard() {
+            // 建立一個隱藏的 input 元素來執行複製動作
+            const tempInput = document.createElement('input');
+            document.body.appendChild(tempInput);
+            tempInput.value = window.location.href; // 取得當前網址
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            // 顯示成功提示 (Toast)
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-full', 'opacity-0');
+            
+            // 3秒後自動隱藏提示
+            setTimeout(() => {
+                toast.classList.add('translate-y-full', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
